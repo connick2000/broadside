@@ -72,9 +72,14 @@
       img.src = url; img.alt = p.title || p.kind || "notice"; img.loading = "lazy";
       d.appendChild(img);
     } else {
-      const kind = document.createElement("span");
-      kind.className = "kind"; kind.textContent = p.kind || "Notice";
-      d.appendChild(kind);
+      // No kind, no line. It used to fall back to the word "Notice", which
+      // printed itself on every sheet whether the keeper wanted it or not —
+      // and cost the body a line of height to say nothing.
+      if (p.kind) {
+        const kind = document.createElement("span");
+        kind.className = "kind"; kind.textContent = p.kind;
+        d.appendChild(kind);
+      }
       if (p.title) {
         const t = document.createElement("span");
         t.className = "ttl"; t.textContent = p.title;
@@ -167,11 +172,14 @@
     if (p.paper) sheet.style.setProperty("--slip-paper", p.paper);
     else sheet.style.removeProperty("--slip-paper");
 
-    const meta = document.createElement("div");
-    meta.className = "meta";
-    meta.textContent = [p.kind, p.author].filter(Boolean).join("  ·  ") || "Notice";
-    meta.title = p.cycle ? `Posted in cycle ${p.cycle}` : "";
-    sheet.appendChild(meta);
+    const metaText = [p.kind, p.author].filter(Boolean).join("  ·  ");
+    if (metaText) {
+      const meta = document.createElement("div");
+      meta.className = "meta";
+      meta.textContent = metaText;
+      meta.title = p.cycle ? `Posted in cycle ${p.cycle}` : "";
+      sheet.appendChild(meta);
+    }
 
     if (p.title) {
       const h = document.createElement("h2"); h.textContent = p.title; sheet.appendChild(h);

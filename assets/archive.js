@@ -21,7 +21,8 @@
       img.src = p.image; img.alt = p.title || "notice"; img.loading = "lazy";
       d.appendChild(img);
     } else {
-      d.appendChild(el("div", "ameta", [p.kind, p.author].filter(Boolean).join(" · ") || "Notice"));
+      const ameta = [p.kind, p.author].filter(Boolean).join(" · ");
+      if (ameta) d.appendChild(el("div", "ameta", ameta));
       if (p.title) d.appendChild(el("h3", null, p.title));
       if (p.body) d.appendChild(el("p", null, p.body));
     }

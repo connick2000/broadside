@@ -248,7 +248,14 @@ body.stage-page{ height:var(--vph, 100dvh); overflow:hidden; }
              margin-top:calc(0.3cqi + var(--pad,1) * 0.7cqi); }
 .slip .ttl{ display:block; font-weight:600; font-size:1.05cqi; margin-top:0.15cqi; overflow:hidden; }
 .slip .body{ display:block; color:var(--ink-soft); font-size:0.85cqi; margin-top:0.25cqi; overflow:hidden; }
+/* A notice with no kind has no kind line, and whatever comes first then has
+   to hold the top margin itself — otherwise the title rides up under the pin,
+   which is where the kind's margin used to keep it. */
+.slip .ttl:first-child, .slip .body:first-child{
+  margin-top:calc(0.3cqi + var(--pad,1) * 0.7cqi); }
 .slip.sz-eighth .kind{ margin-top:calc(0.2cqi + var(--pad,1) * 0.4cqi); font-size:0.6cqi; }
+.slip.sz-eighth .ttl:first-child, .slip.sz-eighth .body:first-child{
+  margin-top:calc(0.2cqi + var(--pad,1) * 0.4cqi); }
 .slip.sz-eighth .ttl{ font-size:0.78cqi; }
 .slip.sz-eighth::after{ top:0.2cqi; width:0.4cqi; height:0.4cqi; margin-left:-0.2cqi; }
 

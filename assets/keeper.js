@@ -109,7 +109,36 @@
     // the packed slats so those cycles are still editable
     for (const c of site.cycles) if (!c.items) c.items = itemsFromSlats(c.slats);
     if (!Array.isArray(site.importedKeys)) site.importedKeys = [];
+    dropForcedKind();
   }
+
+  /* The Kind field used to default to the word "Notice", so every sheet
+     printed it whether anyone asked for one or not. The default is now blank
+     — but boards built before that are still carrying the word.
+
+     Only strip it where it was plainly never a choice: if the whole board,
+     staging list included, has no kind other than "Notice" or nothing, then
+     nobody ever used the field and every "Notice" on it came from the old
+     default. The moment a real kind exists anywhere — Rumour, Bounty — the
+     keeper is using the field on purpose, "Notice" may well be one of their
+     categories, and their words are left exactly as written. */
+  let forcedKindDropped = 0;
+  function dropForcedKind() {
+    const all = [];
+    for (const q of queue) all.push(q);
+    for (const c of site.cycles || []) {
+      for (const it of c.items || []) all.push(it);
+      for (const slat of c.slats || []) for (const p of slat) all.push(p);
+    }
+    for (const p of site.archive || []) all.push(p);
+
+    const kinds = all.map(p => (p && p.kind) || "").filter(Boolean);
+    if (!kinds.length) return;                       // nothing carrying a kind
+    if (kinds.some(k => k !== "Notice")) return;     // the field is in real use
+    for (const p of all) if (p && p.kind === "Notice") p.kind = "";
+    forcedKindDropped = kinds.length;
+  }
+
   function itemsFromSlats(slats) {
     const flat = [];
     for (const slat of slats || []) for (const p of slat) flat.push(p);
@@ -452,7 +481,7 @@
   async function pushSlip(bytes, guess) {
     const item = {
       uid: newUid(), size: guess || lastSize,
-      kind: "Notice", title: "", body: "", author: "",
+      kind: "", title: "", body: "", author: "",
       bytes, origBytes: bytes, mime: "image/jpeg",
       style: "none", styleAmt: 0.5, hidden: false, margin: 100,
     };
@@ -464,7 +493,7 @@
     lastSize = size || lastSize;
     activeList().push({
       uid: newUid(), size: lastSize,
-      kind: "Notice", title: "", body: "", author: "",
+      kind: "", title: "", body: "", author: "",
       bytes: null, hidden: false, margin: 100,
       style: "none", styleAmt: 0.5,
     });
@@ -635,7 +664,7 @@
       }
       const item = {
         uid: newUid(), size: guess || "half",
-        kind: rec.kind || "Notice", title: rec.title || "", body: rec.body || "",
+        kind: rec.kind || "", title: rec.title || "", body: rec.body || "",
         author: rec.author || "", bytes, origBytes: bytes, mime: "image/jpeg",
         style: "none", styleAmt: 0.5, hidden: false, margin: 100,
       };
@@ -1164,7 +1193,7 @@
         n.addEventListener("input", () => { q[key] = n.value; debounceSave(); });
         return n;
       };
-      const kind   = mk("Kind (Notice, Rumour, Bounty…)", "kind");
+      const kind   = mk("Kind — leave blank for none (Notice, Rumour, Bounty…)", "kind");
       const title  = mk("Headline", "title");
       const bodyIn = mk("Body text (shown when a reader opens the slip)", "body", "textarea");
       const author = mk("Attributed to (optional)", "author");
@@ -1989,6 +2018,14 @@
     if (!(await gate())) return;
     document.body.classList.add("unlocked");
     renderAll();
+    if (forcedKindDropped) {
+      // say what changed rather than doing it silently — it edited their text
+      await save();
+      renderAll();
+      toast(`Cleared the word "Notice" off ${forcedKindDropped} ` +
+            `notice${forcedKindDropped === 1 ? "" : "s"} — it was the old default, ` +
+            `not something anyone typed. Publish to update the live board.`);
+    }
 
     $("#pick").addEventListener("change", e => { addFiles(e.target.files); e.target.value = ""; });
     const drop = $("#drop");

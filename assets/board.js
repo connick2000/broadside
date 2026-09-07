@@ -56,13 +56,18 @@
      earlier version derived it from whether the view moved forward, but the
      initial view is assigned before this runs, so that test was always false
      and the return-visit animation never played. */
+  /* View 0 is the bare board, before anything was ever posted. It is a real
+     position in the history, not a special case bolted on: stepping forward
+     from it plays the very first slat sliding in, which was otherwise the one
+     change on the board nobody could ever watch. */
   function setView(n, animate) {
-    n = Math.max(1, Math.min(maxCycle, n));
+    n = Math.max(0, Math.min(maxCycle, n));
     view = n;
     $("#hRange").value = String(n);
-    $("#hPrev").disabled = n <= 1;
+    $("#hPrev").disabled = n <= 0;
     $("#hNext").disabled = n >= maxCycle;
     $("#hNow").disabled = n >= maxCycle;
+    $("#replay").disabled = n <= 0;      // there is no change INTO an empty board
 
     const { before, after, pull } = changeInto(n);
     if (animate) playTransition(before, after, pull);
@@ -70,16 +75,21 @@
 
     const live = after.filter(Boolean).reduce((t, s) => t + s.slips.length, 0);
     const isNow = n >= maxCycle;
-    $("#hLabel").innerHTML = isNow
-      ? `<b>Current</b> — ${maxCycle} change${maxCycle === 1 ? "" : "s"} so far`
-      : `<b>${maxCycle - n}</b> change${maxCycle - n === 1 ? "" : "s"} ago`;
-    $("#hLabel").title = `Board as it stood after cycle ${n}`;
+    $("#hLabel").innerHTML = n === 0
+      ? `<b>Empty</b> — before the first notice went up`
+      : isNow
+        ? `<b>Current</b> — ${maxCycle} change${maxCycle === 1 ? "" : "s"} so far`
+        : `<b>${maxCycle - n}</b> change${maxCycle - n === 1 ? "" : "s"} ago`;
+    $("#hLabel").title = n === 0
+      ? "The bare board. Step forward to watch the first slat come in."
+      : `Board as it stood after cycle ${n}`;
 
     const archived = (state.archive || []).length;
-    $("#status").innerHTML =
-      `${live} notice${live === 1 ? "" : "s"} on the board` +
-      (archived ? ` · <a href="archive.html">${archived} archived</a>` : "");
-    $("#status").title = `Cycle ${n}`;
+    $("#status").innerHTML = n === 0
+      ? "The bare board, before anything was posted."
+      : `${live} notice${live === 1 ? "" : "s"} on the board` +
+        (archived ? ` · <a href="archive.html">${archived} archived</a>` : "");
+    $("#status").title = n === 0 ? "Before cycle 1" : `Cycle ${n}`;
   }
 
   /* ---------- boot ---------- */
@@ -126,7 +136,7 @@
     const hist = $("#history");
     hist.hidden = false;
     const range = $("#hRange");
-    range.min = "1"; range.max = String(maxCycle);
+    range.min = "0"; range.max = String(maxCycle);
 
     let seen = null;
     try { seen = Number(localStorage.getItem(SEEN_KEY)) || null; } catch (e) {}

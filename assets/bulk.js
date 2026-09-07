@@ -129,7 +129,7 @@
       const rec = {
         fingerprint: fp,
         rowNumber: r,
-        kind: at("kind") || "Notice",
+        kind: at("kind") || "",
         title: at("title"),
         body: at("body"),
         author: at("author"),
