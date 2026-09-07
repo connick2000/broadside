@@ -56,7 +56,7 @@
     S.mountReader();
     let data;
     try {
-      const res = await fetch(boardUrl(), { cache: "no-store" });
+      const res = await fetch("data/board.json", { cache: "no-store" });
       if (!res.ok) throw new Error("HTTP " + res.status);
       data = await res.json();
     } catch (err) {

@@ -2,12 +2,252 @@
  "config": {
   "titleLines": [
    "Codex Field Chronicles:",
-   "Crossroads Chapter —",
+   "Crossroads Chapter",
    "Broadside Display"
   ],
-  "submitUrl": "",
+  "submitUrl": "https://tally.so/r/eqgD9l",
   "submitLabel": "Post a notice"
  },
- "cycles": [],
- "archive": []
+ "cycles": [
+  {
+   "cycle": 1,
+   "items": [
+    {
+     "uid": "qmtqntmfhpqx2g",
+     "size": "half",
+     "cycle": 1,
+     "kind": "",
+     "title": "",
+     "body": "",
+     "author": "",
+     "margin": 100,
+     "rot": 0.83,
+     "cutout": true,
+     "paper": "#bebfa1",
+     "image": "images/c1-qmtqntmfhpqx2g.png"
+    },
+    {
+     "uid": "qmtqntmknsj52o",
+     "size": "half",
+     "cycle": 1,
+     "kind": "",
+     "title": "",
+     "body": "",
+     "author": "",
+     "margin": 100,
+     "rot": -1.08,
+     "paper": "#e2dcba",
+     "image": "images/c1-qmtqntmknsj52o.jpg"
+    },
+    {
+     "uid": "qmtqntmns1m9pi",
+     "size": "eighth",
+     "cycle": 1,
+     "kind": "",
+     "title": "",
+     "body": "",
+     "author": "",
+     "margin": 100,
+     "rot": -0.47,
+     "paper": "#aaab8b",
+     "image": "images/c1-qmtqntmns1m9pi.jpg"
+    },
+    {
+     "uid": "qmtqntmpz7m2hp",
+     "size": "eighth",
+     "cycle": 1,
+     "kind": "",
+     "title": "",
+     "body": "",
+     "author": "",
+     "margin": 100,
+     "rot": -0.6,
+     "paper": "#d6cfac",
+     "image": "images/c1-qmtqntmpz7m2hp.jpg"
+    }
+   ],
+   "slats": [
+    [
+     {
+      "uid": "qmtqntmfhpqx2g",
+      "size": "half",
+      "cycle": 1,
+      "kind": "",
+      "title": "",
+      "body": "",
+      "author": "",
+      "margin": 100,
+      "rot": 0.83,
+      "cutout": true,
+      "paper": "#bebfa1",
+      "image": "images/c1-qmtqntmfhpqx2g.png",
+      "id": "qmtqntmfhpqx2g",
+      "hx": 4,
+      "hy": 0,
+      "hw": 2,
+      "hh": 2
+     },
+     {
+      "uid": "qmtqntmknsj52o",
+      "size": "half",
+      "cycle": 1,
+      "kind": "",
+      "title": "",
+      "body": "",
+      "author": "",
+      "margin": 100,
+      "rot": -1.08,
+      "paper": "#e2dcba",
+      "image": "images/c1-qmtqntmknsj52o.jpg",
+      "id": "qmtqntmknsj52o",
+      "hx": 2,
+      "hy": 0,
+      "hw": 2,
+      "hh": 2
+     },
+     {
+      "uid": "qmtqntmns1m9pi",
+      "size": "eighth",
+      "cycle": 1,
+      "kind": "",
+      "title": "",
+      "body": "",
+      "author": "",
+      "margin": 100,
+      "rot": -0.47,
+      "paper": "#aaab8b",
+      "image": "images/c1-qmtqntmns1m9pi.jpg",
+      "id": "qmtqntmns1m9pi",
+      "hx": 6,
+      "hy": 0,
+      "hw": 1,
+      "hh": 1
+     },
+     {
+      "uid": "qmtqntmpz7m2hp",
+      "size": "eighth",
+      "cycle": 1,
+      "kind": "",
+      "title": "",
+      "body": "",
+      "author": "",
+      "margin": 100,
+      "rot": -0.6,
+      "paper": "#d6cfac",
+      "image": "images/c1-qmtqntmpz7m2hp.jpg",
+      "id": "qmtqntmpz7m2hp",
+      "hx": 6,
+      "hy": 1,
+      "hw": 1,
+      "hh": 1
+     }
+    ]
+   ]
+  },
+  {
+   "cycle": 2,
+   "items": [
+    {
+     "uid": "qmtqo2tse79e93",
+     "size": "half",
+     "cycle": 2,
+     "kind": "",
+     "title": "",
+     "body": "",
+     "author": "",
+     "margin": 100,
+     "rot": -1.11,
+     "paper": "#aaac8f",
+     "image": "images/c2-qmtqo2tse79e93.jpg"
+    },
+    {
+     "uid": "qmtqo2tuq79nb9",
+     "size": "eighth",
+     "cycle": 2,
+     "kind": "",
+     "title": "",
+     "body": "",
+     "author": "",
+     "margin": 100,
+     "rot": -0.22,
+     "paper": "#a1a283",
+     "image": "images/c2-qmtqo2tuq79nb9.jpg"
+    },
+    {
+     "uid": "qmtqo2twudjevw",
+     "size": "quarter",
+     "cycle": 2,
+     "kind": "",
+     "title": "",
+     "body": "",
+     "author": "",
+     "margin": 100,
+     "rot": -0.42,
+     "paper": "#a2a58a",
+     "image": "images/c2-qmtqo2twudjevw.jpg"
+    }
+   ],
+   "slats": [
+    [
+     {
+      "uid": "qmtqo2tse79e93",
+      "size": "half",
+      "cycle": 2,
+      "kind": "",
+      "title": "",
+      "body": "",
+      "author": "",
+      "margin": 100,
+      "rot": -1.11,
+      "paper": "#aaac8f",
+      "image": "images/c2-qmtqo2tse79e93.jpg",
+      "id": "qmtqo2tse79e93",
+      "hx": 4,
+      "hy": 0,
+      "hw": 2,
+      "hh": 2
+     },
+     {
+      "uid": "qmtqo2twudjevw",
+      "size": "quarter",
+      "cycle": 2,
+      "kind": "",
+      "title": "",
+      "body": "",
+      "author": "",
+      "margin": 100,
+      "rot": -0.42,
+      "paper": "#a2a58a",
+      "image": "images/c2-qmtqo2twudjevw.jpg",
+      "id": "qmtqo2twudjevw",
+      "hx": 6,
+      "hy": 0,
+      "hw": 1,
+      "hh": 2
+     },
+     {
+      "uid": "qmtqo2tuq79nb9",
+      "size": "eighth",
+      "cycle": 2,
+      "kind": "",
+      "title": "",
+      "body": "",
+      "author": "",
+      "margin": 100,
+      "rot": -0.22,
+      "paper": "#a1a283",
+      "image": "images/c2-qmtqo2tuq79nb9.jpg",
+      "id": "qmtqo2tuq79nb9",
+      "hx": 3,
+      "hy": 0,
+      "hw": 1,
+      "hh": 1
+     }
+    ]
+   ]
+  }
+ ],
+ "archive": [],
+ "importMap": null,
+ "importedKeys": []
 }

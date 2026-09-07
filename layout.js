@@ -203,19 +203,8 @@
 
   const emptyBoard = () => Array.from({length:ROWS}, () => null);
 
-  /* Where the board's data lives, with a changing query string on the end.
-     `cache: "no-store"` governs only the BROWSER's cache; a host that puts a
-     CDN in front of static files — GitHub Pages caches for about ten minutes
-     — will still hand back the copy it already has. A keeper then publishes,
-     reloads, sees the old board, and reasonably concludes the publish failed.
-     A different query string is a different cache key, so this always reaches
-     the file that was actually uploaded. The data is small; the certainty is
-     worth more than the bytes. */
-  const boardUrl = () => "data/board.json?t=" + Date.now();
-  global.boardUrl = boardUrl;
-
   global.CodexLayout = {
     COLS, ROWS, HC, HC_PER_COL, HR_PER_SLAT, SLAT_UNITS, SIZE, ORDER,
-    packCycle, tryPack, applyCycle, emptyBoard, boardUrl,
+    packCycle, tryPack, applyCycle, emptyBoard,
   };
 })(typeof window !== "undefined" ? window : globalThis);

@@ -1782,7 +1782,7 @@
 
   async function readPublished() {
     try {
-      const r = await fetch(boardUrl(), { cache: "no-store" });
+      const r = await fetch("data/board.json", { cache: "no-store" });
       if (!r.ok) throw new Error("HTTP " + r.status);
       pub = await r.json();
     } catch (e) { pub = null; }
@@ -1905,11 +1905,6 @@
   async function exportSite() {
     if (!exportGuard()) return;
     const files = (await collectStatic()).concat(dataFiles());
-    // GitHub Pages runs every upload through Jekyll unless told not to, which
-    // can quietly drop files and folders it decides are its own. Nothing here
-    // is named in a way Jekyll objects to today, but one empty file removes
-    // the whole class of problem and every other host ignores it.
-    files.push({ name: ".nojekyll", data: new Uint8Array(0) });
     Z.download(Z.makeZip(files, new Date()), "codex-broadside-site.zip");
     toast(`Exported ${files.length} files. Drag the zip onto your host to publish.`);
   }
