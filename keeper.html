@@ -393,15 +393,25 @@
 
       <div class="panel" style="margin-top:16px">
         <h2>5 · Publish</h2>
+        <p class="muted" style="margin:0 0 9px">
+          <b>Unzip the export before you upload it.</b> Every host wants the files themselves.
+          Only Netlify Drop takes the zip as-is; GitHub just stores it as a zip and serves nothing.
+        </p>
         <ol class="steps">
-          <li>Click <b>Export the whole site</b> below — you get one zip file.</li>
-          <li>Go to <b>app.netlify.com/drop</b> and drag the zip onto the page.</li>
-          <li>That's it. It gives you a web address. Repeat every cycle.</li>
+          <li>Click <b>Export the whole site</b> below, then <b>unzip it</b>.</li>
+          <li><b>GitHub Pages:</b> in your repository, <b>Add file → Upload files</b>, and drag in
+              everything from <em>inside</em> the unzipped folder — the three <code>.html</code>
+              files and the <code>assets</code>, <code>data</code> and <code>images</code> folders.
+              Commit. Then <b>Settings → Pages</b>, source <b>main</b> / <b>root</b>, once only.</li>
+          <li><b>Netlify Drop:</b> drag the zip itself onto <b>app.netlify.com/drop</b>.</li>
         </ol>
         <button class="primary wide" id="exportSite">Export the whole site (.zip)</button>
         <button class="wide" id="exportData" style="margin-top:7px">Export just data and images</button>
         <p class="muted" style="margin-top:10px">
-          Dropping a new zip on the same Netlify site replaces it. The web address stays the same.
+          After the first upload you only need <b>Export just data and images</b> — unzip it and
+          drag the <code>data</code> and <code>images</code> folders in. Nothing else changes
+          between cycles, and the web address stays the same either way.
+          A new upload of a file that already exists replaces it.
         </p>
       </div>
 
