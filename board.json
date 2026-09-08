@@ -6,7 +6,7 @@
    "Broadside Display"
   ],
   "submitUrl": "https://tally.so/r/eqgD9l",
-  "submitLabel": "Post a notice"
+  "submitLabel": "Submission Form"
  },
  "cycles": [
   {
@@ -248,6 +248,31 @@
   }
  ],
  "archive": [],
- "importMap": null,
- "importedKeys": []
+ "importMap": {
+  "headers": [
+   "Submission ID",
+   "Respondent ID",
+   "Submitted at",
+   "Size",
+   "Type",
+   "Body",
+   "Add Image",
+   "In Game Attribution",
+   "Out of Game Attribution (not displayed)"
+  ],
+  "map": {
+   "image": 6,
+   "size": 3,
+   "kind": 4,
+   "body": 5,
+   "author": 7,
+   "id": 0
+  }
+ },
+ "importedKeys": [
+  "id:yX1ROyx",
+  "id:NqPQGrB",
+  "id:OQrX8Ea",
+  "id:QojRv7G"
+ ]
 }
